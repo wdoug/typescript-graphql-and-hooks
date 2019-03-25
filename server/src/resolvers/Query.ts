@@ -20,6 +20,15 @@ export const Query = queryType({
       },
     });
 
+    t.list.field('drafts', {
+      type: 'Post',
+      resolve: (parent, args, ctx) => {
+        return ctx.prisma.posts({
+          where: { published: false },
+        });
+      },
+    });
+
     t.list.field('filterPosts', {
       type: 'Post',
       args: {
