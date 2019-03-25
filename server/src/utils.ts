@@ -1,17 +1,17 @@
-import { verify } from 'jsonwebtoken'
-import { Context } from './types'
+import { verify } from 'jsonwebtoken';
+import { Context } from './types';
 
-export const APP_SECRET = 'appsecret321'
+export const APP_SECRET = 'appsecret321';
 
 interface Token {
-  userId: string
+  userId: string;
 }
 
 export function getUserId(context: Context) {
-  const Authorization = context.request.get('Authorization')
+  const Authorization = context.request.get('Authorization');
   if (Authorization) {
-    const token = Authorization.replace('Bearer ', '')
-    const verifiedToken = verify(token, APP_SECRET) as Token
-    return verifiedToken && verifiedToken.userId
+    const token = Authorization.replace('Bearer ', '');
+    const verifiedToken = verify(token, APP_SECRET) as Token;
+    return verifiedToken && verifiedToken.userId;
   }
 }
