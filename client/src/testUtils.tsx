@@ -6,8 +6,6 @@ import { MockLink, MockedResponse } from 'apollo-link-mock';
 import { ApolloProvider } from 'react-apollo-hooks';
 import {
   render,
-  getByText,
-  getByLabelText,
   within,
   fireEvent,
   wait,
