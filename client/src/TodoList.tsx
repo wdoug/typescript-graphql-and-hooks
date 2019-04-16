@@ -15,9 +15,10 @@ export const GET_TODOS = gql`
 `;
 
 const TodosList: React.FC = () => {
-  const { data, error } = useQuery<TodosQuery>(GET_TODOS, {
-    suspend: true,
-  });
+  const { data, error, loading } = useQuery<TodosQuery>(GET_TODOS);
+  if (loading) {
+    return <div>...loading</div>;
+  }
   if (error) {
     return <div>Error! {error.message}</div>;
   }
