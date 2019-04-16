@@ -15,3 +15,11 @@ type User {
   name: String
   posts: [Post!]!
 }
+
+type Todo {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  text: String
+  completed: Boolean! @default(value: "false")
+}

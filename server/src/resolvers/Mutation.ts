@@ -1,10 +1,15 @@
 import { stringArg, idArg, mutationType } from 'nexus';
+import { prismaObjectType } from 'nexus-prisma';
 import { hash, compare } from 'bcrypt';
 import { APP_SECRET, getUserId } from '../utils';
 import { sign } from 'jsonwebtoken';
 
-export const Mutation = mutationType({
+export const Mutation = prismaObjectType({
+  name: 'Mutation',
+
   definition(t) {
+    t.prismaFields(['*']);
+
     t.field('signup', {
       type: 'AuthPayload',
       args: {

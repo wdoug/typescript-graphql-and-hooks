@@ -1,0 +1,44 @@
+{
+  "extends": ["react-app", "plugin:react/recommended"],
+
+  "env": {
+    "browser": true
+  },
+
+  "plugins": ["react-hooks"],
+
+  "settings": {
+    "react": {
+      "version": "16.8.5"
+    }
+  },
+
+  "rules": {
+    "react/prop-types": "off",
+
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+
+  "overrides": [
+    {
+      "files": ["**/*.tsx", "**/*.ts"],
+
+      "parser": "@typescript-eslint/parser",
+
+      "plugins": ["@typescript-eslint"],
+
+      "rules": {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "vars": "all",
+            "args": "none",
+            "ignoreRestSiblings": true
+          }
+        ]
+      }
+    }
+  ]
+}

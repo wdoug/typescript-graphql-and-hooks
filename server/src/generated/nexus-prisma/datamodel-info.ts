@@ -7,6 +7,7 @@ export default {
   uniqueFieldsByModel: {
     Post: ['id'],
     User: ['id', 'email'],
+    Todo: ['id'],
   },
   embeddedTypes: [],
   clientPath: 'src/generated/prisma-client',
@@ -431,6 +432,211 @@ export default {
                 ofType: {
                   kind: 'OBJECT',
                   name: 'UserConnection',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'todo',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'TodoWhereUniqueInput',
+                      ofType: null,
+                    },
+                  },
+                  defaultValue: null,
+                },
+              ],
+              type: {
+                kind: 'OBJECT',
+                name: 'Todo',
+                ofType: null,
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'todoes',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoWhereInput',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'orderBy',
+                  description: null,
+                  type: {
+                    kind: 'ENUM',
+                    name: 'TodoOrderByInput',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'skip',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'after',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'before',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'first',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'last',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'LIST',
+                  name: null,
+                  ofType: {
+                    kind: 'OBJECT',
+                    name: 'Todo',
+                    ofType: null,
+                  },
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'todoesConnection',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoWhereInput',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'orderBy',
+                  description: null,
+                  type: {
+                    kind: 'ENUM',
+                    name: 'TodoOrderByInput',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'skip',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'after',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'before',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'first',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'last',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'TodoConnection',
                   ofType: null,
                 },
               },
@@ -2831,6 +3037,907 @@ export default {
           possibleTypes: null,
         },
         {
+          kind: 'INPUT_OBJECT',
+          name: 'TodoWhereUniqueInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'id',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
+          kind: 'OBJECT',
+          name: 'Todo',
+          description: null,
+          fields: [
+            {
+              name: 'id',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'ID',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'createdAt',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'DateTime',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'updatedAt',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'DateTime',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'text',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'completed',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'Boolean',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
+          kind: 'INPUT_OBJECT',
+          name: 'TodoWhereInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'id',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'ID',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'ID',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'id_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'createdAt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'createdAt_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'createdAt_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'DateTime',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'createdAt_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'DateTime',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'createdAt_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'createdAt_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'createdAt_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'createdAt_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedAt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedAt_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedAt_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'DateTime',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedAt_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'DateTime',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedAt_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedAt_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedAt_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedAt_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'text_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'completed',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'Boolean',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'completed_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'Boolean',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'AND',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoWhereInput',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'OR',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoWhereInput',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'NOT',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoWhereInput',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
+          kind: 'ENUM',
+          name: 'TodoOrderByInput',
+          description: null,
+          fields: null,
+          inputFields: null,
+          interfaces: null,
+          enumValues: [
+            {
+              name: 'id_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'id_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'createdAt_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'createdAt_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'updatedAt_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'updatedAt_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'text_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'text_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'completed_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'completed_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+          ],
+          possibleTypes: null,
+        },
+        {
+          kind: 'OBJECT',
+          name: 'TodoConnection',
+          description: null,
+          fields: [
+            {
+              name: 'pageInfo',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'PageInfo',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'edges',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'LIST',
+                  name: null,
+                  ofType: {
+                    kind: 'OBJECT',
+                    name: 'TodoEdge',
+                    ofType: null,
+                  },
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'aggregate',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'AggregateTodo',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
+          kind: 'OBJECT',
+          name: 'TodoEdge',
+          description: null,
+          fields: [
+            {
+              name: 'node',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'Todo',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'cursor',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'String',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
+          kind: 'OBJECT',
+          name: 'AggregateTodo',
+          description: null,
+          fields: [
+            {
+              name: 'count',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'Int',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
           kind: 'INTERFACE',
           name: 'Node',
           description: null,
@@ -3297,6 +4404,232 @@ export default {
                   type: {
                     kind: 'INPUT_OBJECT',
                     name: 'UserWhereInput',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'BatchPayload',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'createTodo',
+              description: null,
+              args: [
+                {
+                  name: 'data',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'TodoCreateInput',
+                      ofType: null,
+                    },
+                  },
+                  defaultValue: null,
+                },
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'Todo',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'updateTodo',
+              description: null,
+              args: [
+                {
+                  name: 'data',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'TodoUpdateInput',
+                      ofType: null,
+                    },
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'TodoWhereUniqueInput',
+                      ofType: null,
+                    },
+                  },
+                  defaultValue: null,
+                },
+              ],
+              type: {
+                kind: 'OBJECT',
+                name: 'Todo',
+                ofType: null,
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'updateManyTodoes',
+              description: null,
+              args: [
+                {
+                  name: 'data',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'TodoUpdateManyMutationInput',
+                      ofType: null,
+                    },
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoWhereInput',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'BatchPayload',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'upsertTodo',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'TodoWhereUniqueInput',
+                      ofType: null,
+                    },
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'create',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'TodoCreateInput',
+                      ofType: null,
+                    },
+                  },
+                  defaultValue: null,
+                },
+                {
+                  name: 'update',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'TodoUpdateInput',
+                      ofType: null,
+                    },
+                  },
+                  defaultValue: null,
+                },
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'Todo',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'deleteTodo',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'TodoWhereUniqueInput',
+                      ofType: null,
+                    },
+                  },
+                  defaultValue: null,
+                },
+              ],
+              type: {
+                kind: 'OBJECT',
+                name: 'Todo',
+                ofType: null,
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'deleteManyTodoes',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoWhereInput',
                     ofType: null,
                   },
                   defaultValue: null,
@@ -5094,6 +6427,99 @@ export default {
           possibleTypes: null,
         },
         {
+          kind: 'INPUT_OBJECT',
+          name: 'TodoCreateInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'text',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'completed',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'Boolean',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
+          kind: 'INPUT_OBJECT',
+          name: 'TodoUpdateInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'text',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'completed',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'Boolean',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
+          kind: 'INPUT_OBJECT',
+          name: 'TodoUpdateManyMutationInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'text',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'completed',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'Boolean',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
           kind: 'OBJECT',
           name: 'Subscription',
           description: null,
@@ -5139,6 +6565,29 @@ export default {
               type: {
                 kind: 'OBJECT',
                 name: 'UserSubscriptionPayload',
+                ofType: null,
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'todo',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoSubscriptionWhereInput',
+                    ofType: null,
+                  },
+                  defaultValue: null,
+                },
+              ],
+              type: {
+                kind: 'OBJECT',
+                name: 'TodoSubscriptionPayload',
                 ofType: null,
               },
               isDeprecated: false,
@@ -5763,6 +7212,303 @@ export default {
                 kind: 'SCALAR',
                 name: 'String',
                 ofType: null,
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
+          kind: 'INPUT_OBJECT',
+          name: 'TodoSubscriptionWhereInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'mutation_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'ENUM',
+                    name: 'MutationType',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedFields_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedFields_contains_every',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'updatedFields_contains_some',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'node',
+              description: null,
+              type: {
+                kind: 'INPUT_OBJECT',
+                name: 'TodoWhereInput',
+                ofType: null,
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'AND',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoSubscriptionWhereInput',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'OR',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoSubscriptionWhereInput',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+            {
+              name: 'NOT',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'TodoSubscriptionWhereInput',
+                    ofType: null,
+                  },
+                },
+              },
+              defaultValue: null,
+            },
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
+          kind: 'OBJECT',
+          name: 'TodoSubscriptionPayload',
+          description: null,
+          fields: [
+            {
+              name: 'mutation',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'ENUM',
+                  name: 'MutationType',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'node',
+              description: null,
+              args: [],
+              type: {
+                kind: 'OBJECT',
+                name: 'Todo',
+                ofType: null,
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'updatedFields',
+              description: null,
+              args: [],
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null,
+                  },
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'previousValues',
+              description: null,
+              args: [],
+              type: {
+                kind: 'OBJECT',
+                name: 'TodoPreviousValues',
+                ofType: null,
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null,
+        },
+        {
+          kind: 'OBJECT',
+          name: 'TodoPreviousValues',
+          description: null,
+          fields: [
+            {
+              name: 'id',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'ID',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'createdAt',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'DateTime',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'updatedAt',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'DateTime',
+                  ofType: null,
+                },
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'text',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null,
+              },
+              isDeprecated: false,
+              deprecationReason: null,
+            },
+            {
+              name: 'completed',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'Boolean',
+                  ofType: null,
+                },
               },
               isDeprecated: false,
               deprecationReason: null,

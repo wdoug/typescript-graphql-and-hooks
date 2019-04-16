@@ -7,6 +7,10 @@ export const typeDefs = /* GraphQL */ `
     count: Int!
   }
 
+  type AggregateTodo {
+    count: Int!
+  }
+
   type AggregateUser {
     count: Int!
   }
@@ -33,6 +37,19 @@ export const typeDefs = /* GraphQL */ `
     ): Post!
     deletePost(where: PostWhereUniqueInput!): Post
     deleteManyPosts(where: PostWhereInput): BatchPayload!
+    createTodo(data: TodoCreateInput!): Todo!
+    updateTodo(data: TodoUpdateInput!, where: TodoWhereUniqueInput!): Todo
+    updateManyTodoes(
+      data: TodoUpdateManyMutationInput!
+      where: TodoWhereInput
+    ): BatchPayload!
+    upsertTodo(
+      where: TodoWhereUniqueInput!
+      create: TodoCreateInput!
+      update: TodoUpdateInput!
+    ): Todo!
+    deleteTodo(where: TodoWhereUniqueInput!): Todo
+    deleteManyTodoes(where: TodoWhereInput): BatchPayload!
     createUser(data: UserCreateInput!): User!
     updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
     updateManyUsers(
@@ -356,6 +373,25 @@ export const typeDefs = /* GraphQL */ `
       first: Int
       last: Int
     ): PostConnection!
+    todo(where: TodoWhereUniqueInput!): Todo
+    todoes(
+      where: TodoWhereInput
+      orderBy: TodoOrderByInput
+      skip: Int
+      after: String
+      before: String
+      first: Int
+      last: Int
+    ): [Todo]!
+    todoesConnection(
+      where: TodoWhereInput
+      orderBy: TodoOrderByInput
+      skip: Int
+      after: String
+      before: String
+      first: Int
+      last: Int
+    ): TodoConnection!
     user(where: UserWhereUniqueInput!): User
     users(
       where: UserWhereInput
@@ -380,7 +416,137 @@ export const typeDefs = /* GraphQL */ `
 
   type Subscription {
     post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
+    todo(where: TodoSubscriptionWhereInput): TodoSubscriptionPayload
     user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  }
+
+  type Todo {
+    id: ID!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    text: String
+    completed: Boolean!
+  }
+
+  type TodoConnection {
+    pageInfo: PageInfo!
+    edges: [TodoEdge]!
+    aggregate: AggregateTodo!
+  }
+
+  input TodoCreateInput {
+    text: String
+    completed: Boolean
+  }
+
+  type TodoEdge {
+    node: Todo!
+    cursor: String!
+  }
+
+  enum TodoOrderByInput {
+    id_ASC
+    id_DESC
+    createdAt_ASC
+    createdAt_DESC
+    updatedAt_ASC
+    updatedAt_DESC
+    text_ASC
+    text_DESC
+    completed_ASC
+    completed_DESC
+  }
+
+  type TodoPreviousValues {
+    id: ID!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    text: String
+    completed: Boolean!
+  }
+
+  type TodoSubscriptionPayload {
+    mutation: MutationType!
+    node: Todo
+    updatedFields: [String!]
+    previousValues: TodoPreviousValues
+  }
+
+  input TodoSubscriptionWhereInput {
+    mutation_in: [MutationType!]
+    updatedFields_contains: String
+    updatedFields_contains_every: [String!]
+    updatedFields_contains_some: [String!]
+    node: TodoWhereInput
+    AND: [TodoSubscriptionWhereInput!]
+    OR: [TodoSubscriptionWhereInput!]
+    NOT: [TodoSubscriptionWhereInput!]
+  }
+
+  input TodoUpdateInput {
+    text: String
+    completed: Boolean
+  }
+
+  input TodoUpdateManyMutationInput {
+    text: String
+    completed: Boolean
+  }
+
+  input TodoWhereInput {
+    id: ID
+    id_not: ID
+    id_in: [ID!]
+    id_not_in: [ID!]
+    id_lt: ID
+    id_lte: ID
+    id_gt: ID
+    id_gte: ID
+    id_contains: ID
+    id_not_contains: ID
+    id_starts_with: ID
+    id_not_starts_with: ID
+    id_ends_with: ID
+    id_not_ends_with: ID
+    createdAt: DateTime
+    createdAt_not: DateTime
+    createdAt_in: [DateTime!]
+    createdAt_not_in: [DateTime!]
+    createdAt_lt: DateTime
+    createdAt_lte: DateTime
+    createdAt_gt: DateTime
+    createdAt_gte: DateTime
+    updatedAt: DateTime
+    updatedAt_not: DateTime
+    updatedAt_in: [DateTime!]
+    updatedAt_not_in: [DateTime!]
+    updatedAt_lt: DateTime
+    updatedAt_lte: DateTime
+    updatedAt_gt: DateTime
+    updatedAt_gte: DateTime
+    text: String
+    text_not: String
+    text_in: [String!]
+    text_not_in: [String!]
+    text_lt: String
+    text_lte: String
+    text_gt: String
+    text_gte: String
+    text_contains: String
+    text_not_contains: String
+    text_starts_with: String
+    text_not_starts_with: String
+    text_ends_with: String
+    text_not_ends_with: String
+    completed: Boolean
+    completed_not: Boolean
+    AND: [TodoWhereInput!]
+    OR: [TodoWhereInput!]
+    NOT: [TodoWhereInput!]
+  }
+
+  input TodoWhereUniqueInput {
+    id: ID
   }
 
   type User {
