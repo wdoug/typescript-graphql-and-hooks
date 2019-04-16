@@ -11,6 +11,7 @@ import {
   wait,
   waitForElement,
 } from 'react-testing-library';
+import ErrorBoundary from './ErrorBoundary';
 
 interface CreateClientOptions {
   readonly addTypename?: boolean;
@@ -30,15 +31,19 @@ export function createClient({
   });
 }
 
+export const suspenseFallbackText = 'Suspense Text';
+
 export function renderWithContext(
   ui: React.ReactElement<any>,
-  { mocks = [], addTypename = true } = {},
+  { mocks = [], addTypename = true }: CreateClientOptions = {},
 ) {
   const client = createClient({ mocks, addTypename });
   return render(
-    <Suspense fallback={<div>Loading</div>}>
-      <ApolloProvider client={client}>{ui}</ApolloProvider>
-    </Suspense>,
+    <ErrorBoundary>
+      <Suspense fallback={<div>{suspenseFallbackText}</div>}>
+        <ApolloProvider client={client}>{ui}</ApolloProvider>
+      </Suspense>
+    </ErrorBoundary>,
   );
 }
 

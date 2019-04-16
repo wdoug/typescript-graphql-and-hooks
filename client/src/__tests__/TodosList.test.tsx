@@ -1,9 +1,14 @@
-import React, { Suspense } from 'react';
-import { render, wait } from 'react-testing-library';
-import { createClient, getQueries } from '../testUtils';
-import { ApolloProvider } from 'react-apollo-hooks';
+import React from 'react';
+import {
+  suspenseFallbackText,
+  getQueries,
+  renderWithContext,
+  wait,
+} from '../testUtils';
 import TodoList, { GET_TODOS } from '../TodoList';
 
+// TODO: Replace this with this better method:
+// https://medium.freecodecamp.org/a-new-approach-to-mocking-graphql-data-1ef49de3d491
 const mocks = [
   {
     request: {
@@ -14,9 +19,10 @@ const mocks = [
       data: {
         todos: [
           {
-            __typeName: 'Query',
             id: 'asdf',
-            text: 'an todo',
+            text: 'a todo',
+            completed: false,
+            __typename: 'Todo',
           },
         ],
       },
@@ -25,23 +31,18 @@ const mocks = [
 ];
 
 const { getByText } = getQueries();
-const client = createClient({ mocks });
 
 describe('happy path', () => {
   beforeEach(() => {
     const ui = <TodoList />;
-    render(
-      <Suspense fallback={<>Loading</>}>
-        <ApolloProvider client={client}>{ui}</ApolloProvider>
-      </Suspense>,
-    );
+    renderWithContext(ui, { mocks });
   });
 
   it('initially shows a loading state', () => {
-    expect(getByText('Loading')).toBeInTheDocument();
+    expect(getByText(suspenseFallbackText)).toBeInTheDocument();
   });
 
   it('shows the expected output after loading', async () => {
-    await wait(() => expect(getByText('Loading')).toBeInTheDocument());
+    await wait(() => expect(getByText('a todo')).toBeInTheDocument());
   });
 });
