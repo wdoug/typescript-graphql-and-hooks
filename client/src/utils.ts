@@ -1,13 +1,27 @@
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery, QueryHookOptions } from 'react-apollo-hooks';
+import { OperationVariables } from 'apollo-client';
 import { DocumentNode } from 'graphql';
 
-export function useCustomQuery<T>(query: DocumentNode, args?: Object) {
-  const result = useQuery<T>(query, {
-    suspend: true,
-    ...args,
+export function useCustomQuery<
+  TData,
+  TVariables = OperationVariables,
+  TCache = object
+>(
+  query: DocumentNode,
+  {
+    suspend = true,
+    throwNetworkError = true,
+    ...otherArgs
+  }: QueryHookOptions<TVariables, TCache> & {
+    throwNetworkError?: boolean;
+  } = {},
+) {
+  const result = useQuery<TData, TVariables, TCache>(query, {
+    suspend,
+    ...otherArgs,
   });
 
-  if (result.error) {
+  if (throwNetworkError && result.error) {
     throw result.error;
   }
 
