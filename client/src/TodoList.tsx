@@ -1,6 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { useQuery } from 'react-apollo-hooks';
+import { useCustomQuery } from './utils';
 import { TodosQuery } from './generated/graphql';
 import Todo from './TodoItem';
 
@@ -15,13 +15,7 @@ export const GET_TODOS = gql`
 `;
 
 const TodosList: React.FC = () => {
-  const { data, error, loading } = useQuery<TodosQuery>(GET_TODOS);
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>Error! {error.message}</div>;
-  }
+  const { data } = useCustomQuery<TodosQuery>(GET_TODOS);
 
   return (
     <ul>
