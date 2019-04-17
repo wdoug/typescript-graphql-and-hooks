@@ -3,46 +3,59 @@ import {
   suspenseFallbackText,
   getQueries,
   renderWithContext,
-  wait,
+  LoadingProvider,
+  ErrorProvider,
+  ApolloMockingProvider,
 } from '../testUtils';
-import TodoList, { GET_TODOS } from '../TodoList';
-
-// TODO: Replace this with this better method:
-// https://medium.freecodecamp.org/a-new-approach-to-mocking-graphql-data-1ef49de3d491
-const mocks = [
-  {
-    request: {
-      query: GET_TODOS,
-      variables: {},
-    },
-    result: {
-      data: {
-        todos: [
-          {
-            id: 'asdf',
-            text: 'a todo',
-            completed: false,
-            __typename: 'Todo',
-          },
-        ],
-      },
-    },
-  },
-];
+import TodoList from '../TodoList';
 
 const { getByText } = getQueries();
 
-describe('happy path', () => {
+describe('when loading', () => {
   beforeEach(() => {
-    const ui = <TodoList />;
-    renderWithContext(ui, { mocks });
+    renderWithContext(
+      <LoadingProvider>
+        <TodoList />
+      </LoadingProvider>,
+    );
   });
 
-  it('initially shows a loading state', () => {
+  it('suspends', () => {
     expect(getByText(suspenseFallbackText)).toBeInTheDocument();
   });
+});
 
-  it('shows the expected output after loading', async () => {
-    await wait(() => expect(getByText('a todo')).toBeInTheDocument());
+describe('when there is a network error', () => {
+  beforeEach(() => {
+    renderWithContext(
+      <ErrorProvider graphQLErrors={[{ message: 'network error' }]}>
+        <TodoList />
+      </ErrorProvider>,
+    );
+  });
+
+  it('throws an error to be handled by an error boundary', () => {
+    // TODO - investigate console warning
+    expect(getByText(/network error/)).toBeInTheDocument();
+  });
+});
+
+describe('with data', () => {
+  beforeEach(() => {
+    const customResolvers = {
+      Query: () => ({
+        todos: () => [{ text: 'write test' }, { text: 'profit' }],
+      }),
+    };
+    renderWithContext(
+      <ApolloMockingProvider customResolvers={customResolvers}>
+        <TodoList />
+      </ApolloMockingProvider>,
+    );
+  });
+
+  it('renders the todos', () => {
+    expect(getByText('write test')).toBeInTheDocument();
+    expect(getByText('profit')).toBeInTheDocument();
   });
 });

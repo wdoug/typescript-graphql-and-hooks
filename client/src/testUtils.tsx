@@ -11,7 +11,19 @@ import {
   wait,
   waitForElement,
 } from 'react-testing-library';
+import { Observable } from 'rxjs';
 import ErrorBoundary from './ErrorBoundary';
+import mergeResolvers from './utils/mergeResolvers';
+import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
+import { SchemaLink } from 'apollo-link-schema';
+import faker from 'faker';
+import fs from 'fs';
+import path from 'path';
+
+const schemaString = fs.readFileSync(
+  path.resolve(__dirname, '../../server/src/generated/schema.graphql'),
+  'utf-8',
+);
 
 interface CreateClientOptions {
   readonly addTypename?: boolean;
@@ -33,16 +45,10 @@ export function createClient({
 
 export const suspenseFallbackText = 'Suspense Text';
 
-export function renderWithContext(
-  ui: React.ReactElement<any>,
-  { mocks = [], addTypename = true }: CreateClientOptions = {},
-) {
-  const client = createClient({ mocks, addTypename });
+export function renderWithContext(ui: React.ReactElement<any>) {
   return render(
     <ErrorBoundary>
-      <Suspense fallback={<div>{suspenseFallbackText}</div>}>
-        <ApolloProvider client={client}>{ui}</ApolloProvider>
-      </Suspense>
+      <Suspense fallback={<div>{suspenseFallbackText}</div>}>{ui}</Suspense>
     </ErrorBoundary>,
   );
 }
@@ -54,5 +60,78 @@ export function getQueries(container = document.body) {
 export function delay(ms: number = 0) {
   return new Promise(r => setTimeout(r, ms));
 }
+
+export const LoadingProvider: React.FC = ({ children }) => {
+  // @ts-ignore
+  const link = new ApolloLink(operation => {
+    return new Observable(() => {});
+  });
+
+  const client = new ApolloClient({
+    link,
+    cache: new InMemoryCache(),
+  });
+
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+};
+
+type ErrorType = { message: string };
+type ErrorProviderProps = {
+  graphQLErrors?: ErrorType[];
+};
+
+// This is just a link that swallows all operations and returns the same thing
+// for every request: The specified error.
+export const ErrorProvider: React.FC<ErrorProviderProps> = ({
+  graphQLErrors,
+  children,
+}) => {
+  // @ts-ignore
+  const link = new ApolloLink(operation => {
+    return new Observable(observer => {
+      observer.next({
+        errors: graphQLErrors || [
+          { message: 'Unspecified error from ErrorProvider.' },
+        ],
+      });
+      observer.complete();
+    });
+  });
+
+  const client = new ApolloClient({
+    link,
+    cache: new InMemoryCache(),
+  });
+
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+};
+
+const schema = makeExecutableSchema({ typeDefs: schemaString });
+const globalMocks = {
+  Todo: () => ({
+    text: () => faker.lorem.sentence(),
+    completed: () => faker.random.boolean(),
+  }),
+};
+
+type ApolloMockingProviderProps = {
+  customResolvers: any;
+};
+
+export const ApolloMockingProvider: React.FC<ApolloMockingProviderProps> = ({
+  customResolvers,
+  children,
+}) => {
+  const mocks = mergeResolvers(globalMocks, customResolvers);
+
+  addMockFunctionsToSchema({ schema, mocks });
+
+  const client = new ApolloClient({
+    link: new SchemaLink({ schema }),
+    cache: new InMemoryCache(),
+  });
+
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+};
 
 export { fireEvent, wait, waitForElement };
