@@ -17,8 +17,5 @@
       "prettier --write",
       "git add"
     ]
-  },
-  "dependencies": {
-    "@types/graphql": "^14.2.0"
   }
 }
